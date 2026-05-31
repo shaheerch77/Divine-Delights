@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Fix for autofill styling - SINGLE VERSION */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #374151 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ensure consistent border color */
+input:autofill {
+  border: 1px solid #d1d5db !important;
+  background-color: white !important;
+  color: #374151 !important;
+}
+
+/* For dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1f2937 inset !important;
+    -webkit-text-fill-color: #f9fafb !important;
+  }
+  
+  input:autofill {
+    border: 1px solid #4b5563 !important;
+    background-color: #1f2937 !important;
+    color: #f9fafb !important;
+  }
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #fb7185;
+  border-radius: 3px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: #e11d48;
+}
+
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #fb7185 #f1f1f1;
+}
+
+/* Simple image fixes - REMOVED complex CSS */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Basic responsive grid */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+/* Fix image alignment and sizing */
+.product-img-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.product-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-img-container img:hover {
+  transform: scale(1.05);
+}
+
+/* Image fallback */
+.product-img-container img.error {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fff7ed 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img-container img.error::after {
+  content: '🍰';
+  font-size: 48px;
+  color: #fbb6ce;
+}
