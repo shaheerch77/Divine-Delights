@@ -177,8 +177,7 @@ scripts/
 
 ## 👥 Authors
 
-- **Faizan** (FA23-BCS-043)
-- **Lailmah** (FA23-BCS-073)
+- **Shaheer Arshad** 
 
 ---
 
